@@ -22,7 +22,6 @@ function App() {
         setTitle(copy);
       }}>가나다순정렬</button>
 
-
       <div className='list'>
         <span onClick={()=>{
           let copy = [...title];
@@ -43,8 +42,20 @@ function App() {
         <p>2월 19일 발행</p>
       </div>
 
+      <Modal></Modal>
+
     </div>
   );
+}
+
+function Modal(){
+  return (
+    <div className='modal'>
+      <h4>제목</h4>
+      <p>날짜</p>
+      <p>상세내용</p>
+     </div>
+  )
 }
 
 export default App;
