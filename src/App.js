@@ -16,19 +16,24 @@ function App() {
         <h4>React Blog</h4>
       </div>
 
+      <button onClick={()=>{
+        let copy = [...title];
+        copy.sort();
+        setTitle(copy);
+      }}>가나다순정렬</button>
+
+
       <div className='list'>
         <span onClick={()=>{
           let copy = [...title];
           copy[0] = "여자코트추천";
           setTitle(copy);
         }}>🔄</span>
-        
+
         <h4>{ title[0] } <span onClick={()=>{setGood(good+1)}}>👍</span>
          {good} </h4>
         <p>2월 17일 발행</p>
       </div>
-
-
       <div className='list'>
         <h4>{ title[1] }</h4>
         <p>2월 18일 발행</p>
