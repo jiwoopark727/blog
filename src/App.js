@@ -9,7 +9,7 @@ function App() {
   let post = '강남 우동 맛집';
   let [title, setTitle] = useState(['남자코트추천', '강남우동맛집','파이썬독학']);
   let [good, setGood] = useState(0);
-
+  let [modal, setModal] = useState(false);  //모달 스위치 역할
   return (
     <div className="App">
       <div className='black-nav'>
@@ -38,12 +38,20 @@ function App() {
         <p>2월 18일 발행</p>
       </div>
       <div className='list'>
-        <h4>{ title[2] }</h4>
+        <h4 onClick={()=>{
+          count++;
+          console.log(count);
+          if(count/2==0){ 
+            setModal(false);
+          }else{
+            setModal(true);
+          }
+          }}>{ title[2] }</h4>
         <p>2월 19일 발행</p>
       </div>
 
-      <Modal></Modal>
-
+    <Modal></Modal>
+      
     </div>
   );
 }
