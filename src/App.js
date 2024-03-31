@@ -7,7 +7,7 @@ import { useState } from 'react';
 function App() {
 
   let [title, setTitle] = useState(['남자코트추천', '강남우동맛집','파이썬독학']);
-  let [good, setGood] = useState(0);
+  let [good, setGood] = useState([0,0,0]);
   let [modal, setModal] = useState(false);  //모달 스위치 역할
 
   return (
@@ -22,7 +22,7 @@ function App() {
         setTitle(copy);
       }}>가나다순정렬</button>
 
-      <div className='list'>
+      {/* <div className='list'>
         <span onClick={()=>{
           let copy = [...title];
           copy[0] = "여자코트추천";
@@ -40,7 +40,22 @@ function App() {
       <div className='list'>
         <h4 onClick={()=>{ setModal(!modal) }}>{ title[2] }</h4>
         <p>2월 19일 발행</p>
-      </div>
+      </div> */}
+
+      { 
+        title.map(function(a, i){
+          return (
+          <div className="list"  key={i}>
+            <h4>{ title[i] } <span onClick={()=>{
+              let copy = [...good];
+              copy[i]++;
+              setGood(copy);
+            }}>👍</span>
+            {good[i]} </h4>
+            <p>2월 {17+i}일 발행</p>
+          </div> )
+        }) 
+      }
 
       {
         modal == true ? <Modal></Modal> : null 
