@@ -9,6 +9,8 @@ function App() {
   let [title, setTitle] = useState(['남자코트추천', '강남우동맛집','파이썬독학']);
   let [good, setGood] = useState([0,0,0]);
   let [modal, setModal] = useState(false);  //모달 스위치 역할
+  let [num, setNum] = useState(0);
+  let [info, setInfo] = useState(['발마칸코트','현우동','코딩애플'])
 
   return (
     <div className="App">
@@ -47,13 +49,14 @@ function App() {
           return (
           <div className="list"  key={i}>
             <h4 onClick={()=>{
+              setNum(i);
               setModal(true);
             }}>{ title[i] } 
             <span onClick={()=>{
               let copy = [...good];
               copy[i]++;
               setGood(copy);
-            }}>👍</span>
+            }}>    👍</span>
             {good[i]} </h4>
             <p>2월 {17+i}일 발행</p>
           </div> )
@@ -61,7 +64,7 @@ function App() {
       }
 
       {
-        modal == true ? <Modal title={title} setTitle={setTitle}></Modal> : null 
+        modal == true ? <Modal title={title} setTitle={setTitle} num={num} info={info}></Modal> : null 
       }
 
     </div>
@@ -71,9 +74,9 @@ function App() {
 function Modal(props){
   return (
     <div className='modal'>
-      <h4>{props.title[0]}</h4>
-      <p>날짜</p>
-      <p>상세내용</p>
+      <h4>{props.title[props.num]}</h4>
+      <p>2월{17+props.num}일</p>
+      <p>{props.info[props.num]}</p>
       <button onClick={()=>{
         let copy = [...props.title];
         copy[0] = "여자코트추천";
