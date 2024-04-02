@@ -46,7 +46,10 @@ function App() {
         title.map(function(a, i){
           return (
           <div className="list"  key={i}>
-            <h4>{ title[i] } <span onClick={()=>{
+            <h4 onClick={()=>{
+              setModal(true);
+            }}>{ title[i] } 
+            <span onClick={()=>{
               let copy = [...good];
               copy[i]++;
               setGood(copy);
@@ -58,19 +61,24 @@ function App() {
       }
 
       {
-        modal == true ? <Modal></Modal> : null 
+        modal == true ? <Modal title={title} setTitle={setTitle}></Modal> : null 
       }
 
     </div>
   );
 }
 
-function Modal(){
+function Modal(props){
   return (
     <div className='modal'>
-      <h4>제목</h4>
+      <h4>{props.title[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button onClick={()=>{
+        let copy = [...props.title];
+        copy[0] = "여자코트추천";
+        props.setTitle(copy);
+      }}>글수정</button>
      </div>
   )
 }
