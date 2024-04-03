@@ -92,19 +92,19 @@ function App() {
       <button onClick={()=>{
         let copy = [...title];
         copy.unshift(입력값);
-        setTitle(copy);
+        입력값!='' ? setTitle(copy) : null
 
         let copy2 = [...info];
         copy2.unshift(입력값2);
-        setInfo(copy2);
+        입력값!='' ? setInfo(copy2) : null
 
         let copy3 = [...good];
         copy3.unshift(0);
-        setGood(copy3);
+        입력값!='' ? setGood(copy3) : null
 
         let copy4 = [...date];
         copy4.unshift(now.getDate());
-        setDate(copy4);
+        입력값!='' ? setDate(copy4) : null
       }}
       >글발행</button>
 
