@@ -3,6 +3,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { useState } from 'react';
+import React from 'react';
 
 function App() {
 
@@ -113,6 +114,8 @@ function App() {
         ? <Modal title={title} setTitle={setTitle} num={num} info={info}></Modal> : null 
       }
 
+      <Modal2></Modal2>
+
     </div>
   );
 }
@@ -130,6 +133,24 @@ function Modal(props){
       }}>글수정</button>
      </div>
   )
+}
+
+
+class Modal2 extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      name : 'kim',
+      age : 20
+    }
+  }
+  render(){
+    return (
+      <div>안녕 { this.state.age }
+        <button onClick={()=>{ this.setState({age : 21}) }}>버튼</button>
+      </div>
+    )
+  }
 }
 
 export default App;
