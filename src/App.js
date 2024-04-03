@@ -59,7 +59,17 @@ function App() {
             }}>👍</span>
             {good[i]}</h4>
             <p>2월 {17+i}일 발행</p>
-          </div> )
+            <button onClick={()=>{
+              let copy = [...title];
+              copy.splice(i,1);
+              setTitle(copy);
+
+              let copy2 = [...info];
+              copy2.splice(i,1);
+              setInfo(copy2);
+            }}>삭제</button>
+          </div> 
+          )
         }) 
       }
 
