@@ -10,7 +10,9 @@ function App() {
   let [good, setGood] = useState([0,0,0]);
   let [modal, setModal] = useState(false);  //모달 스위치 역할
   let [num, setNum] = useState(0);
-  let [info, setInfo] = useState(['발마칸코트','현우동','코딩애플'])
+  let [info, setInfo] = useState(['발마칸코트','현우동','코딩애플']);
+  let [입력값, 입력값변경] = useState('');
+  let [입력값2, 입력값변경2] = useState('');
 
   return (
     <div className="App">
@@ -48,23 +50,40 @@ function App() {
         title.map(function(a, i){
           return (
           <div className="list"  key={i}>
-            <h4 onClick={()=>{
-              setNum(i);
-              setModal(true);
-            }}>{ title[i] } 
-            <span onClick={()=>{
+            <h4 onClick={()=>{ setNum(i);  setModal(true); }}>{ title[i] } 
+            <span onClick={(e)=>{
+              e.stopPropagation();
               let copy = [...good];
               copy[i]++;
               setGood(copy);
-            }}>    👍</span>
-            {good[i]} </h4>
+            }}>👍</span>
+            {good[i]}</h4>
             <p>2월 {17+i}일 발행</p>
           </div> )
         }) 
       }
 
+      <input onChange={(e)=>{
+        입력값변경(e.target.value);
+      }}></input>
+            <input onChange={(e)=>{
+        입력값변경2(e.target.value);
+      }}></input>
+      
+      <button onClick={()=>{
+        let copy = [...title];
+        copy.unshift(입력값);
+        setTitle(copy);
+
+        let copy2 = [...info];
+        copy2.unshift(입력값2);
+        setInfo(copy2);
+      }}
+      >글발행</button>
+
       {
-        modal == true ? <Modal title={title} setTitle={setTitle} num={num} info={info}></Modal> : null 
+        modal == true 
+        ? <Modal title={title} setTitle={setTitle} num={num} info={info}></Modal> : null 
       }
 
     </div>
