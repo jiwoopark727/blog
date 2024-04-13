@@ -53,30 +53,30 @@ function App() {
       { 
         title.map(function(a, i){
           return (
-          <div className="list"  key={i}>
-            <h4 onClick={()=>{ setNum(i);  setModal(true); }}>{ title[i] } 
-            <span onClick={(e)=>{
-              e.stopPropagation();
-              let copy = [...good];
-              copy[i]++;
-              setGood(copy);
-            }}>👍</span>
-            {good[i]}</h4>
-            <p>2월 {date[i]}일 발행</p>
-            <button onClick={()=>{
-              let copy = [...title];
-              copy.splice(i,1);
-              setTitle(copy);
+            <div className="list"  key={i}>
+              <h4 onClick={()=>{ setNum(i);  setModal(true); }}>{ title[i] } 
+              <span onClick={(e)=>{
+                e.stopPropagation();
+                let copy = [...good];
+                copy[i]++;
+                setGood(copy);
+              }}>👍</span>
+              {good[i]}</h4>
+              <p>2월 {date[i]}일 발행</p>
+              <button onClick={()=>{
+                let copy = [...title];
+                copy.splice(i,1);
+                setTitle(copy);
 
-              let copy2 = [...info];
-              copy2.splice(i,1);
-              setInfo(copy2);
+                let copy2 = [...info];
+                copy2.splice(i,1);
+                setInfo(copy2);
 
-              let copy3 = [...date];
-              copy3.splice(i,1);
-              setDate(copy3);
-            }}>삭제</button>
-          </div> 
+                let copy3 = [...date];
+                copy3.splice(i,1);
+                setDate(copy3);
+              }}>삭제</button>
+            </div> 
           )
         }) 
       }
